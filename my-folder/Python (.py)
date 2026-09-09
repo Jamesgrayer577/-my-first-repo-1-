@@ -1,1 +1,30 @@
+#Author: James Grayer
+#Program: Mod_3 - Object & Data Types
+#Date: Sept, 9, 2026
 
+class Car:
+    def __init__(self, speed: float):
+        """
+        Constructor to initialize the car's constant speed.
+        """
+        self.speed = speed
+
+    def calculate_distance(self, time: float) -> float:
+        """
+        Calculates and returns the distance traveled using: Distance = Speed * Time
+        """
+        return self.speed * time
+
+
+# Main program execution
+if __name__ == "__main__":
+    # Create an object of the Car class with a speed of 70 mph
+    my_car = Car(70.0)
+
+    # List of target times in hours
+    hours_list = [6, 10, 15]
+
+    # Calculate and display the distance for each time interval
+    for hours in hours_list:
+        distance = my_car.calculate_distance(hours)
+        print(f"In {hours} hours, the car will travel {int(distance)} miles.")

@@ -1,42 +1,52 @@
 #Author: James Grayer
-#Program: Mod_7 - Functions
-#Date: Oct, 7, 2026
+#Program: Mod_8 - Modules & Libraries
+#Date: Oct, 13, 2026
 
-def get_expenses():
-    "Prompts the user to enter monthly costs for automobile expenses."
-    loan = float(input("Enter monthly loan payment: $"))
-    insurance = float(input("Enter monthly insurance cost: $"))
-    gas = float(input("Enter monthly gas cost: $"))
-    oil = float(input("Enter monthly oil cost: $"))
-    tires = float(input("Enter monthly tires cost: $"))
-    maintenance = float(input("Enter monthly maintenance cost: $"))
-    return loan, insurance, gas, oil, tires, maintenance
+import math
 
-
-def show_expenses(loan, insurance, gas, oil, tires, maintenance):
-    "Calculates and displays the total monthly and annual automobile costs."
-    total_monthly = loan + insurance + gas + oil + tires + maintenance
-    total_annual = total_monthly * 12
-
-    print(f"\nTotal Monthly Cost: ${total_monthly:,.2f}")
-    print(f"Total Annual Cost: ${total_annual:,.2f}")
+# Constants
+FEET_PER_GALLON = 112
+LABOR_HOURS_PER_GALLON = 8
+LABOR_CHARGE_PER_HOUR = 35.00
 
 
 def main():
-    loan, insurance, gas, oil, tires, maintenance = get_expenses()
-    show_expenses(loan, insurance, gas, oil, tires, maintenance)
+  # Ask the user for inputs
+  square_feet = float(
+      input("Enter the square feet of wall space to be painted: ")
+  )
+  paint_price_per_gallon = float(
+      input("Enter the price of the paint per gallon: ")
+  )
+
+  # Calculations
+  # Using math.ceil to round up to the next whole gallon, or float division depending on assignment rules
+  gallons_required = math.ceil(square_feet / FEET_PER_GALLON)
+  labor_hours_required = gallons_required * LABOR_HOURS_PER_GALLON
+  cost_of_paint = gallons_required * paint_price_per_gallon
+  labor_charges = labor_hours_required * LABOR_CHARGE_PER_HOUR
+  total_cost = cost_of_paint + labor_charges
+
+  # Display the results
+  print("\n--- Paint Job Estimate ---")
+  print(f"Number of gallons of paint required: {gallons_required}")
+  print(f"Hours of labor required: {labor_hours_required}")
+  print(f"Cost of the paint: ${cost_of_paint:,.2f}")
+  print(f"Labor charges: ${labor_charges:,.2f}")
+  print(f"Total cost of the paint job: ${total_cost:,.2f}")
 
 
 if __name__ == "__main__":
-    main()
-PS G:\Users\James\AppData\Local\Programs\Microsoft VS Code> & C:\Users\James\.local\bin\python3.14.exe "c:/Users/James/OneDrive - Laramie County Community College/COSC 1010/python/.py"
-Enter monthly loan payment: $30.05
-Enter monthly insurance cost: $129.99
-Enter monthly gas cost: $50.00
-Enter monthly oil cost: $30.00
-Enter monthly tires cost: $25.00
-Enter monthly maintenance cost: $20.00
+  main()
 
-Total Monthly Cost: $285.04
-Total Annual Cost: $3,420.48
+    S G:\Users\James\AppData\Local\Programs\Microsoft VS Code> & C:\Users\James\AppData\Local\Python\pythoncore-3.14-64\python.exe "c:/Users/James/OneDrive - Laramie County Community College/COSC 1010/python/.py"
+Enter the square feet of wall space to be painted: 112
+Enter the price of the paint per gallon: 25.98
+
+--- Paint Job Estimate ---
+Number of gallons of paint required: 1
+Hours of labor required: 8
+Cost of the paint: $25.98
+Labor charges: $280.00
+Total cost of the paint job: $305.98
 PS G:\Users\James\AppData\Local\Programs\Microsoft VS Code> 
